@@ -8,15 +8,43 @@
 <body>
     
     <div id="root">
+        Not rendered
+    </div> 
 
-    </div>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 
     <script>
-        const element = document.createElement("h1");
-        element.innerHTML = "Hello React";
 
-        const root = document.getElementById("root");
-        root.appendChild(element);
+        // === 1. Simple Way to create element using the Javascript ===
+
+        //const element = document.createElement("h1");
+        //element.innerHTML = "Hello React";
+
+        //const root = document.getElementById("root");
+        //root.appendChild(element);
+
+
+        // === 2. Create Element using the Pure React ===
+
+        const heading = React.createElement("h1", {
+            id:"heading",
+            className:"element"
+        }, "Namaste Everyone!");
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        //root.render(heading);
+        //console.log(heading);
+
+        // === 3. Creating complex and nested stuff ===
+        const head1 = React.createElement("h1", {}, "Heading 1");
+        const head2 = React.createElement("h1", {}, "Heading 2");
+
+        const container = React.createElement("div", {id: "container"}, [head1, head2]);
+        root.render(container)
+    
+
     </script>
+    
+
 </body>
 </html>
