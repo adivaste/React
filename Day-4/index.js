@@ -172,84 +172,54 @@ const BodyComponent = () => {
 
 // === FOOTER ===
 
-const featureDiv = (
-    <>
-        <div className="feature" style={{
-            margin : "10px",
-            display : "flex",
-            gap : "10px"
-        }}>
-            <div className="featureIcon" style={{
-                fontSize : "25px",
-                textAlign : "center",
-                display : "flex",
-                alignItems : "center",
-                padding : "10px"
-            }}> <FontAwesomeIcon icon={faPen} /> </div>
+const featuresData = [
+    {
+        icon : faPen,
+        title : "Easy To Use",
+        description : "Editing and customizing eassential Landing page is easy and fast"
+    },
+    {
+        icon : faLayerGroup,
+        title : "100% Responsive",
+        description : "Editing and customizing eassential Landing page is easy and fast"
+    },
+    {
+        icon : faFile,
+        title : "50+ New Pages",
+        description : "Editing and customizing eassential Landing page is easy and fast"
+    }
+]
 
-            <div className="featureContent" style={{
-                padding : "0px 20px"
-            }}>
-                <p className="featureTitle" style={{
-                fontSize : "22px",
-                fontWeight : "700",
-                padding : "5px 0px"
-            }}> Easy To Use</p>
-                <p className="featureTDescription"> Editing and customizing eassential Landing page is easy and fast</p>
-            </div>
-        </div>
+const FeatureDivComponent = (props) => {
+    return (
+            <>
+                <div className="feature" style={{
+                    margin : "10px",
+                    display : "flex",
+                    gap : "10px"
+                }}>
+                    <div className="featureIcon" style={{
+                        fontSize : "25px",
+                        textAlign : "center",
+                        display : "flex",
+                        alignItems : "center",
+                        padding : "10px"
+                    }}> <FontAwesomeIcon icon={props.feature.icon}/> </div>
 
-        <div className="feature" style={{
-            margin : "10px",
-            display : "flex",
-            gap : "10px"
-        }}>
-            <div className="featureIcon" style={{
-                fontSize : "25px",
-                textAlign : "center",
-                display : "flex",
-                alignItems : "center",
-                padding : "10px"
-            }}> <FontAwesomeIcon icon={faLayerGroup} /> </div>
-
-            <div className="featureContent" style={{
-                padding : "0px 20px"
-            }}>
-                <p className="featureTitle" style={{
-                fontSize : "22px",
-                fontWeight : "700",
-                padding : "5px 0px"
-            }}> 100% Responsive</p>
-                <p className="featureTDescription"> Editing and customizing eassential Landing page is easy and fast</p>
-            </div>
-        </div>
-
-        <div className="feature" style={{
-            margin : "10px",
-            display : "flex",
-            gap : "10px"
-        }}>
-            <div className="featureIcon" style={{
-                fontSize : "25px",
-                textAlign : "center",
-                display : "flex",
-                alignItems : "center",
-                padding : "10px"
-            }}> <FontAwesomeIcon icon={faFile} /> </div>
-
-            <div className="featureContent" style={{
-                padding : "0px 20px"
-            }}>
-                <p className="featureTitle" style={{
-                fontSize : "22px",
-                fontWeight : "700",
-                padding : "5px 0px"
-            }}> 50+ New Pages</p>
-                <p className="featureTDescription"> Editing and customizing eassential Landing page is easy and fast</p>
-            </div>
-        </div>
-    </>
-)
+                    <div className="featureContent" style={{
+                        padding : "0px 20px"
+                    }}>
+                        <p className="featureTitle" style={{
+                        fontSize : "22px",
+                        fontWeight : "700",
+                        padding : "5px 0px"
+                    }}> {props.feature.title} </p>
+                        <p className="featureTDescription"> {props.feature.description} </p>
+                    </div>
+                </div>
+            </>
+        )
+    }
 
 const FooterComponent = () => {
     return (
@@ -261,7 +231,10 @@ const FooterComponent = () => {
             padding : "0px 50px",
             margin : "auto"
         }}>
-            {featureDiv}
+
+            <FeatureDivComponent feature={featuresData[0]}/>
+            <FeatureDivComponent feature={featuresData[1]}/>
+            <FeatureDivComponent feature={featuresData[2]}/>
           
         </footer>
     )
@@ -271,11 +244,12 @@ const FooterComponent = () => {
 // React component
 const LandingPage = () => {
 
-    return (<>
+    return (
+    <React.Fragment>
         { HeaderComponent() }
         { BodyComponent() }
         { FooterComponent() }
-    </>)
+    </React.Fragment>)
     /*
     Header
         - Logo
