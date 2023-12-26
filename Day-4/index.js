@@ -190,7 +190,9 @@ const featuresData = [
     }
 ]
 
-const FeatureDivComponent = (props) => {
+const FeatureDivComponent = ({feature}) => {
+    const {icon, title, description} = feature;
+
     return (
             <>
                 <div className="feature" style={{
@@ -204,7 +206,7 @@ const FeatureDivComponent = (props) => {
                         display : "flex",
                         alignItems : "center",
                         padding : "10px"
-                    }}> <FontAwesomeIcon icon={props.feature.icon}/> </div>
+                    }}> <FontAwesomeIcon icon={icon}/> </div>
 
                     <div className="featureContent" style={{
                         padding : "0px 20px"
@@ -213,8 +215,8 @@ const FeatureDivComponent = (props) => {
                         fontSize : "22px",
                         fontWeight : "700",
                         padding : "5px 0px"
-                    }}> {props.feature.title} </p>
-                        <p className="featureTDescription"> {props.feature.description} </p>
+                    }}> {title} </p>
+                        <p className="featureTDescription"> {description} </p>
                     </div>
                 </div>
             </>
