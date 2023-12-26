@@ -1,0 +1,11 @@
+*{
+    margin: 0px;
+    padding : 0px;
+    box-sizing : border-box;
+}
+body{
+    background : url("https://gcdnb.pbrd.co/images/6gVrlDEgpyMR.png")
+}
+footer{
+    display : flex;
+}
