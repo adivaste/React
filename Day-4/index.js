@@ -191,6 +191,7 @@ const featuresData = [
 ]
 
 const FeatureDivComponent = ({feature}) => {
+    
     const {icon, title, description} = feature;
 
     return (
@@ -205,7 +206,8 @@ const FeatureDivComponent = ({feature}) => {
                         textAlign : "center",
                         display : "flex",
                         alignItems : "center",
-                        padding : "10px"
+                        padding : "10px",
+                        color : "#16a085"
                     }}> <FontAwesomeIcon icon={icon}/> </div>
 
                     <div className="featureContent" style={{
@@ -234,9 +236,12 @@ const FooterComponent = () => {
             margin : "auto"
         }}>
 
-            <FeatureDivComponent feature={featuresData[0]}/>
-            <FeatureDivComponent feature={featuresData[1]}/>
-            <FeatureDivComponent feature={featuresData[2]}/>
+            {
+                /* Using the map to automate the things */
+                featuresData.map((feature) => {
+                    return <FeatureDivComponent feature={feature}/>
+                })
+            }
           
         </footer>
     )
