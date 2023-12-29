@@ -1,0 +1,49 @@
+*{
+    padding : 0px;
+    margin : 0px;
+    box-sizing : border-box;
+}
+body{
+    width : 100vw;
+    height : 100vh;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+}
+.title{
+    text-align : center;
+    color :#d35400;
+    font-size: 60px;
+}
+.counterWrapper{
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    gap : 50px;
+    padding : 50px;
+    text-decoration : none;
+}
+.incrementButton, .decrementButton{
+    display : flex;
+    align-items : center;
+    justify-content : center;
+    color : green;
+    border : 1px solid gray;
+    border-radius : 50%;
+    width : 40px;
+    height : 40px;
+    cursor : pointer;
+}
+.counterDisplay{
+    font-size : 70px;
+}
+.inputBox{
+    padding : 5px 10px ;
+    margin : 10px;
+    font-family : "SF Pro Display";
+}
+.button{
+    padding : 5px 10px ;
+    margin : 5px;
+    font-family : "SF Pro Display";
+}
