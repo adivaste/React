@@ -1,11 +1,12 @@
 // === Header component ===
+import { logoURL } from "../constants"
 
 // 1. Logo
 const logo = (
     <div className="logo" style={{ margin:"0px 0px", width:"150px" }}>
         <img 
             alt="Delaware Logo"
-            src="https://gcdnb.pbrd.co/images/W0YtbOq0wJpl.png?o=1"
+            src={logoURL}
             style={{ maxWidth : '100%',height: 'auto', scale : "1.2" }}
         />
     </div>
@@ -27,7 +28,7 @@ const navigationMenu = (
             <li> Features </li>
             <li> Services </li>
             <li> Pricing </li>
-            <li> Contact </li>
+            <li> Contact Us </li>
         </ul>
     </div>
 )

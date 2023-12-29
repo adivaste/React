@@ -1,4 +1,5 @@
 // === BODY ===
+import { useState } from "react"
 
 // 1. Small Intro line
 const smallIntroLine = (
@@ -12,12 +13,12 @@ const smallIntroLine = (
 )
 
 // 2. Heading
-const heading = (
+const Heading = ({ customTitle }) => (
     <div style={{
         fontSize : "24px",
         margin : "3px"
     }}>
-        <h1>Make Landing Page,
+        <h1> {customTitle},
         <br/>Fast and Easily.</h1>
     </div>
 )
@@ -31,9 +32,11 @@ const subHeading = (
 )
 
 // 4. Input box and button
-const inputBoxAndButton = (
+const InputBoxAndButton = ({customTitle, setCustomTitle}) => {
+
+    return (
     <div>
-        <input placeholder="Enter Your Email" type="text" style={{
+        <input placeholder="Enter Your Email" type="text" value={customTitle} style={{
             width : "300px",
             height : "40px", 
             fontSize : "16px",
@@ -45,7 +48,12 @@ const inputBoxAndButton = (
             fontSize : "17px",
             fontWeight : "500",
             fontFamily : "SF Pro Display",
-        }}/> 
+        }}
+        
+        onChange={(e) => {
+            setCustomTitle(e.target.value);
+        }}
+        /> 
         <button style={{
             width : "120px",
             height : "40px",
@@ -62,7 +70,8 @@ const inputBoxAndButton = (
 
         }}> Subscribe </button>
     </div>
-)
+)}
+
 
 // 5. Small outro line
 const smallOutroLine = (
@@ -75,6 +84,9 @@ const smallOutroLine = (
 )
 
 const Body = () => {
+
+    const [customTitle, setCustomTitle] = useState("Change title from here");
+
     return (
         <div style={{
             textAlign:"center",
@@ -85,9 +97,9 @@ const Body = () => {
             margin : "50px 0px",
         }}>
             {smallIntroLine}
-            {heading}
+            <Heading customTitle={customTitle}/>
             {subHeading}
-            {inputBoxAndButton}
+            <InputBoxAndButton customTitle={customTitle} setCustomTitle={setCustomTitle} />
             {smallOutroLine}
         </div>
     )
