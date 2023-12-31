@@ -1,0 +1,11 @@
+*{
+  margin : 0px;
+  padding : 0px;
+  box-sizing : border-box
+}
+
+@font-face {
+  font-family : "Metropolis";
+  font-style: normal;
+  src: url("./../fonts/Metropolis.woff2") format('woff2');
+}
