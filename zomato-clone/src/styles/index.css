@@ -9,3 +9,12 @@
   font-style: normal;
   src: url("./../fonts/Metropolis.woff2") format('woff2');
 }
+.restaurantCard{
+  width : 280px;
+  align-self: flex-start;
+  padding : 5px 2px;
+}
+
+.halfWidth{
+  flex:1;
+}

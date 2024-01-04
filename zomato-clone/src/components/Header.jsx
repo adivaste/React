@@ -1,6 +1,46 @@
-import { useState } from "react";
-import NavbarComponent from "./Navbar";
+import restaurantsData from "../constants"
 import './../styles/index.css'
+
+// Function to calculate getFilteredRestaurants
+function getFilteredRestaurants(query){
+    const res = restaurantsData.filter((restaurant) => (restaurant.name.toLowerCase().includes(query.toLowerCase())))
+    console.log(query, res);
+    return res;
+}
+
+
+// Navbar component
+const NavbarComponent = () => (
+    <div style={{
+        display:"flex",
+        justifyContent:"space-between",
+        alignItems:"center", 
+        padding : "20px"
+    }}>
+        <div className="getTheApp" style={{
+            padding:"10px", 
+            cursor: "pointer"
+        }}> Get the App </div>
+        <div className="navigationMenu">
+            <ul style={{
+                display:"flex",
+                listStyle:"none",
+                alignItems:"center",
+                justifyContent:"space-between", 
+                padding:"10px",
+                margin : "0px",
+                gap:"30px",
+                fontSize : "16px",
+                cursor: "pointer"
+            }}>
+                <li>Investor Relations</li>
+                <li>Add Restaurant</li>
+                <li>Log In</li>
+                <li>Sign Up</li>
+            </ul>
+        </div>
+    </div>
+)
 
 // Logo
 const logo = (
@@ -22,8 +62,10 @@ const title = (
 )
 
 // Search Bar
-const SearchBarComponent = () => {
-    const [query, setQuery] = useState("");
+const SearchBarComponent = (props) => {
+    
+    const {query, setQuery, restaurants, setRestaurants} = props;
+
     return (
         <div className="searchBar" style={{
             width:"100%",
@@ -43,8 +85,13 @@ const SearchBarComponent = () => {
                 outline : "none",
                 fontFamily : "Metropolis",
                 background : "#ffffff",
-            }} onChange={(e) => setQuery(e.target.value)}/>
-            <button style={{
+            }} onChange={(e) => {
+                setQuery(e.target.value);
+            }}/>
+            <button onClick={() => {
+                const filteredRestaurants = getFilteredRestaurants(query);
+                setRestaurants(filteredRestaurants);
+            }} style={{
                 width : "120px",
                 padding: "15px 20px",
                 fontSize : "16px",
@@ -53,13 +100,17 @@ const SearchBarComponent = () => {
                 background : "#ffffff",
                 outline : "none",
                 fontFamily : "Metropolis",
+                cursor: "pointer"
             }} >Search </button>
         </div>
     )
 }
 
 
-const HeaderComponent = () => {
+const HeaderComponent = (props) => {
+
+    const {query, setQuery, restaurants, setRestaurants} = props;
+
     return (
         <header style={{
             background: `url("https://b.zmtcdn.com/web_assets/81f3ff974d82520780078ba1cfbd453a1583259680.png")`,
@@ -75,7 +126,7 @@ const HeaderComponent = () => {
             }}>
                 {logo}
                 {title}
-                <SearchBarComponent />
+                <SearchBarComponent query={query} setQuery={setQuery} restaurants={restaurants} setRestaurants={setRestaurants} />
             </div>
         </header>
     )
