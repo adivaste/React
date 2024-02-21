@@ -1,0 +1,12 @@
+button{
+    width: fit-content;
+    padding: 0px 0.8em;
+    height: 35px;
+    font-size: 18px;
+    border: 1.5px solid grey;
+    border-radius: 20px;
+    background-color: rgba(181, 180, 180, 0.297);
+    backdrop-filter: blur(30px);
+    cursor: pointer;
+    color: #333;
+}

@@ -1,0 +1,10 @@
+.footerLeft p{
+    font-size: 16px;
+    line-height: 30px;
+}
+.footerLeft{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap : 0px;
+}

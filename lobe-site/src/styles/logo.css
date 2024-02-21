@@ -1,0 +1,14 @@
+a{
+    height: 100%;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;   
+    color: #333;
+    cursor: pointer;
+}
+span{
+    font-size: 22px;
+    padding: 0px 5px;
+}

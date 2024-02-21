@@ -1,0 +1,8 @@
+.footerCommon ul li{
+    list-style-type: none;
+    padding: 8px 0px;
+}
+.title{
+    font-weight: 600;
+    padding: 15px 0px;
+}
