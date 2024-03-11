@@ -15,7 +15,11 @@ const Form = ({setItems}) => {
 
     function handleSubmitAction(e){
         e.preventDefault();
-        setItems(prev => [...prev, {name : travelItem, count : travelItemCount, isPacked : false }]);
+        setItems(prev => [...prev, {name : travelItem, count : travelItemCount, isPacked : false, id: new Date().getMilliseconds() }]);
+        
+        // Reset the form
+        setTravelItemCount(1);
+        setTravelItem("");
     }
 
     return ( 

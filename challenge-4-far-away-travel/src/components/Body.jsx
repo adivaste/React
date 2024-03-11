@@ -2,21 +2,19 @@ import React, { useState } from "react";
 
 const Body = ({items, setItems}) => {
 
-    const [sortedData, setSortedData] = useState([...items]);
     const [sortedOption, setSortedOption] = useState("insertion");
 
-    function handleDeletion(deletionIndex){
+    function handleDeletion(id){
         setItems(prev => {
-            var newData = prev.filter((item, index) => index !== deletionIndex);
+            var newData = prev.filter((item) => item.id !== id);
             return newData;
         })
-        sortData();
     }
 
-    function handleIsPackedState(modificationIndex){
+    function handleIsPackedState(id){
         setItems(prev => {
-            var newData = prev.map((item, index) => {
-                if (modificationIndex == index){
+            var newData = prev.map((item) => {
+                if (item.id == id){
                     const tempData = {...item, isPacked : !item.isPacked};
                     return tempData;
                 }
@@ -24,29 +22,19 @@ const Body = ({items, setItems}) => {
             })
             return newData;
         })
-        sortData();
     }
 
     function handleSortOption(e){
         setSortedOption(e.target.value);
-        sortData();
     }
 
-    function sortData(){
-        setItems(prev => {
-            var newSorted = [...prev];
-            if (sortedOption === "itemName") {
-                newSorted.sort((a, b) => a.name.localeCompare(b.name));
-            } else if (sortedOption === "status") {
-                newSorted.sort((a, b) => (a.isPacked ? 1 : -1) - (b.isPacked ? 1 : -1));
-            }
-            else{
-                newSorted.sort((a, b) => b.name.localeCompare(a.name));
-            }
-            return newSorted;
-        })
+    
+    var newSorted = [...items];
+    if (sortedOption === "itemName") {
+        newSorted.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortedOption === "status") {
+        newSorted.sort((a, b) => Number(a.isPacked) - Number(b.isPacked));
     }
-
     
     if(items.length == 0){
         return <div className="text-xl text-center w-full font-medium text-stone-700 p-10"> No Items Added into list ! </div>
@@ -55,10 +43,10 @@ const Body = ({items, setItems}) => {
     return (
         <div className="h-96 flex-col flex justify-between">
             <div className="grid grid-cols-4 gap-4 p-8 text-center bg-[#FEFBF6]">
-            { items.map((item, index) => 
+            { newSorted.map((item, index) => 
                 <div key={index} className="flex justify-between rounded-md px-4 py-2 border-2 border-slate-200">
-                    <span className={`cursor-pointer  ${item.isPacked ? "line-through" : "" } font-medium text-lg`} onClick={() => handleIsPackedState(index)}>{item.name} ({item.count})</span>
-                    <span className="cursor-pointer" onClick={() => handleDeletion(index)}>❌</span>
+                    <span className={`cursor-pointer  ${item.isPacked ? "line-through" : "" } font-medium text-lg`} onClick={() => handleIsPackedState(item.id)}>{item.name} ({item.count})</span>
+                    <span className="cursor-pointer" onClick={() => handleDeletion(item.id)}>❌</span>
                 </div>)
              }
             </div>
@@ -68,7 +56,7 @@ const Body = ({items, setItems}) => {
                     <option className="bg-white" value="itemName">Sort by Item Name</option>
                     <option className="bg-white" value="status">Sort by Status</option>
                 </select>
-                <input className="bg-red-200 text-lg p-1 px-2 rounded-md" type="reset" value="Reset" />
+                <input className="bg-red-200 text-md p-1 px-2 rounded-md" type="reset" value="Reset" />
             </div>
         </div>
     )
