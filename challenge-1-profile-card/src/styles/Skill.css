@@ -1,0 +1,9 @@
+.skill{
+    padding: 5px 8px;
+    line-height: 20px;
+    border-radius: 8px;
+    margin: 2px;
+    width: fit-content;
+    display: inline-block;
+    color: white;
+}
