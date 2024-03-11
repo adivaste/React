@@ -1,6 +1,7 @@
 import VideoImage from "./../images/Video.jpg"
 import "./../styles/body.css"
 import DownloadComponent from "./Download"
+import CounterApp from "./counter-app/CounterApp"
 
 // Title
 const title = (
@@ -45,7 +46,8 @@ const BodyComponent = () => {
             { subTitle }
             { image }
             { bottomTitle }
-            <DownloadComponent customStyles={DownloadComponentStyle} />    
+            <DownloadComponent customStyles={DownloadComponentStyle} />  
+            <CounterApp />
         </main>
     )
 }
