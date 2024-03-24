@@ -18,7 +18,7 @@ export default function Friends({friendsData, selectedUserID, setSelectedUserID}
                             <p className="text-xl">{friendsData[key].name}</p>
                             <p className="text-lg opacity-70 overflow-scroll no-scrollbar">
                             {friendsData[key].currentMoneyStatus === 0 ?
-                                <span className="text-gray-600">You are equal !</span>
+                                <span className="text-gray-600">You are {friendsData[key].name} equal !</span>
                                 : friendsData[key].currentMoneyStatus < 0 ?
                                 <span className="text-red-600">You ows ${Math.abs(friendsData[key].currentMoneyStatus)} to {friendsData[key].name}. </span>
                                 : <span className="text-emerald-600">{friendsData[key].name} ows ${Math.abs(friendsData[key].currentMoneyStatus)} to you. </span>

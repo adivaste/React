@@ -68,7 +68,7 @@ export default function SplitBillForm({isPopUpOpen, userID, friendsData, setFrie
                         {/* List of inputs */}
                         <div className="flex justify-between items-center gap-x-56">
                             <label className="text-xl " htmlFor="billValue"> Bill Value </label>
-                            <input onChange={(e) => setFormData((prev) => ({...prev, bill : e.target.value }))}  value={formData.bill} placeholder="Enter Amount" className="px-4 py-1 text-lg rounded-md w-40 text-zinc-800" type="number" name="billValue" id="billValue" />
+                            <input onChange={(e) => setFormData((prev) => ({...prev, bill : e.target.value, friendsExpense:Number(e.target.value) }))}  value={formData.bill} placeholder="Enter Amount" className="px-4 py-1 text-lg rounded-md w-40 text-zinc-800" type="number" name="billValue" id="billValue" />
                         </div>
                         <div className="flex justify-between items-center gap-x-56">
                             <label className="text-xl " htmlFor="description"> Description </label>
@@ -76,11 +76,11 @@ export default function SplitBillForm({isPopUpOpen, userID, friendsData, setFrie
                         </div>
                         <div className="flex justify-between items-center ">
                             <label className="text-lg" htmlFor="yourExpense">Your Expense </label>
-                            <input onChange={(e) => setFormData((prev) => ({...prev, yourExpense : e.target.value }))}  value={formData.yourExpense} placeholder="Enter Amount" className="px-4 py-1 text-lg rounded-md w-40 text-zinc-800" type="number" name="yourExpense" id="yourExpense" />
+                            <input onChange={(e) => setFormData((prev) => ({...prev, yourExpense : e.target.value, friendsExpense : prev.bill - Number(e.target.value) }))}  value={formData.yourExpense} placeholder="Enter Amount" className="px-4 py-1 text-lg rounded-md w-40 text-zinc-800" type="number" name="yourExpense" id="yourExpense" />
                         </div>
                         <div className="flex justify-between items-center ">
                             <label className="text-lg" htmlFor="userExpense">{userName}'s Expense </label>
-                            <input onChange={(e) => setFormData((prev) => ({...prev, friendsExpense : e.target.value }))}  value={formData.friendsExpense} placeholder="Enter Amount" className="px-4 py-1 text-lg rounded-md w-40 text-zinc-800" type="number" name="userExpense" id="userExpense" />
+                            <input value={formData.friendsExpense} placeholder="Enter Amount" className="px-4 py-1 text-lg rounded-md w-40 text-zinc-800" type="number" name="userExpense" id="userExpense" />
                         </div>
                         <div className="flex justify-between items-center ">
                             <label className="text-lg" htmlFor="payer">Who is paying the bill ? </label>
